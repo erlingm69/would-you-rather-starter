@@ -1,4 +1,7 @@
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom"
+import { connect } from 'react-redux'
+import { handleInitialData } from '../actions/shared'
 import Home from './Home'
 import AddQuestion from './AddQuestion'
 import ViewQuestion from './ViewQuestion'
@@ -6,7 +9,11 @@ import Leaderboard from './Leaderboard'
 import Login from './Login'
 import Nav from './Nav'
 
-function App() {
+function App({ dispatch }) {
+  useEffect(() => {
+    dispatch(handleInitialData())
+  }, [dispatch])
+  
   return (
     <Router>
       <div className="container">
@@ -21,4 +28,10 @@ function App() {
   );
 }
 
-export default App;
+function mapStateToProps({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App)
