@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import QuestionListItem from './QuestionListItem'
+import { Link } from "react-router-dom"
 
 const MODE_UNANSWERED = "unanswered"
 const MODE_ANSWERED = "answered"
@@ -22,7 +23,9 @@ function Home({ answered, unanswered, questionId }) {
                 {
                     mode === MODE_UNANSWERED && unanswered && Object.keys(unanswered).map((questionId) => (
                         <li key={questionId}>
-                            <QuestionListItem questionId={questionId} />
+                            <Link to={`/questions/${questionId}`}>
+                                <QuestionListItem questionId={questionId} />
+                            </Link>
                         </li>
                     ))}
                 {
