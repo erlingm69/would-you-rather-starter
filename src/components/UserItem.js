@@ -7,11 +7,6 @@ function UserItem({ users, dispatch, userId, next }) {
     const history = useHistory()
 
     function handleLogin(e) {
-        console.log(history)
-        console.log("users=", users)
-        console.log("dispatch=", dispatch)
-        console.log("userId=", userId)
-        console.log("next=", next)
         dispatch(setAuthedUser(userId))
         history.push("/leaderboard")
     }
