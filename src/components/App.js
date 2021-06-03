@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Home from './Home'
@@ -9,6 +9,7 @@ import Leaderboard from './Leaderboard'
 import Login from './Login'
 import Nav from './Nav'
 import PrivateRoute from './PrivateRoute'
+import NotFound from './NotFound'
 
 function App({ dispatch }) {
   useEffect(() => {
@@ -19,11 +20,14 @@ function App({ dispatch }) {
     <Router>
       <div className="container">
         <Nav />
-        <PrivateRoute exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <PrivateRoute exact path="/add" component={AddQuestion} />
-        <PrivateRoute exact path="/questions/:questionId" component={ViewQuestion} />
-        <PrivateRoute exact path="/leaderboard" component={Leaderboard} />
+        <Switch>
+          <PrivateRoute exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <PrivateRoute exact path="/add" component={AddQuestion} />
+          <PrivateRoute exact path="/questions/:questionId" component={ViewQuestion} />
+          <PrivateRoute exact path="/leaderboard" component={Leaderboard} />
+          <Route component={NotFound} />
+        </Switch>
       </div>
     </Router>
   );
