@@ -8,21 +8,22 @@ import ViewQuestion from './ViewQuestion'
 import Leaderboard from './Leaderboard'
 import Login from './Login'
 import Nav from './Nav'
+import PrivateRoute from './PrivateRoute'
 
 function App({ dispatch }) {
   useEffect(() => {
     dispatch(handleInitialData())
   }, [dispatch])
-  
+
   return (
     <Router>
       <div className="container">
         <Nav />
-        <Route exact path="/" component={Home} />
+        <PrivateRoute exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/add" component={AddQuestion} />
-        <Route exact path="/questions/:questionId" component={ViewQuestion} />
-        <Route exact path="/leaderboard" component={Leaderboard} />
+        <PrivateRoute exact path="/add" component={AddQuestion} />
+        <PrivateRoute exact path="/questions/:questionId" component={ViewQuestion} />
+        <PrivateRoute exact path="/leaderboard" component={Leaderboard} />
       </div>
     </Router>
   );
