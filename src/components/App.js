@@ -24,7 +24,7 @@ function App({ dispatch }) {
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/add" component={AddQuestion} />
-          <PrivateRoute exact path="/questions/:questionId" component={ViewQuestion} />
+          <PrivateRoute exact path="/questions/:id" component={ViewQuestion} />
           <PrivateRoute exact path="/leaderboard" component={Leaderboard} />
           <Route component={NotFound} />
         </Switch>
