@@ -25,7 +25,7 @@ export default function Nav() {
                         Leaderboard
           </NavLink>
                 </li>
-                <li className='toRight'>
+                <li className='to-right'>
                     <AuthButton />
                 </li>
             </ul>
