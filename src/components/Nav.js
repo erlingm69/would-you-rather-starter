@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import AuthButton from './AuthButton'
 
 export default function Nav () {
   return (
@@ -21,9 +22,7 @@ export default function Nav () {
           </NavLink>
         </li>
         <li className='toRight'>
-          <NavLink to='/login' activeClassName='active'>
-            Login
-          </NavLink>
+            <AuthButton />
         </li>
       </ul>
     </nav>

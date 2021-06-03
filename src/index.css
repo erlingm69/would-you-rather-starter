@@ -65,3 +65,17 @@ li {
   background-color: beige;
   cursor: pointer;
 }
+
+.auth-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  font-weight: bold;
+  color: purple;  
+}
+
+.auth-button button{
+  margin-left: 1em;
+  font-weight: bold;
+  height: inherit;
+}
