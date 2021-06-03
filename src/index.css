@@ -79,3 +79,20 @@ li {
   font-weight: bold;
   height: inherit;
 }
+
+.leader-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: beige;
+}
+
+.leader-item p {
+  margin-left: 1em;
+}
+
+.leader-item .score {
+  color: red;
+  font-size: inherit;
+  margin-left: 1em;
+}
