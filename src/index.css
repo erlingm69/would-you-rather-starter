@@ -108,3 +108,21 @@ li {
   width: 250px;
   position: relative;
 }
+
+.question-item {
+  display: flex;
+  flex-direction: row;
+  background-color: beige;
+  justify-content: space-around;
+  align-items: center;  
+}
+
+.bold-and-margin {
+  font-weight: bold;
+  margin: 1em;
+}
+
+.poll-option {
+  width: 50%;
+  text-align: center;
+}
