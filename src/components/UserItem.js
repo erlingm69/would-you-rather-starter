@@ -8,7 +8,7 @@ function UserItem({ users, dispatch, userId, next }) {
 
     function handleLogin(e) {
         dispatch(setAuthedUser(userId))
-        history.push(next)
+        history.push(next === undefined ? "/" : next)
     }
 
     return (
