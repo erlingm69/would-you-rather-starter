@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import LoadingBar from 'react-redux-loading'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Home from './Home'
@@ -11,7 +12,7 @@ import Nav from './Nav'
 import PrivateRoute from './PrivateRoute'
 import NotFound from './NotFound'
 
-function App({ dispatch }) {
+function App({ dispatch, loading }) {
   useEffect(() => {
     dispatch(handleInitialData())
   }, [dispatch])
@@ -19,24 +20,29 @@ function App({ dispatch }) {
   return (
     <Router>
       <div className="container">
-        <Nav />
-        <Switch>
-          <PrivateRoute exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <PrivateRoute exact path="/add" component={AddQuestion} />
-          <PrivateRoute exact path="/questions/:id" component={ViewQuestion} />
-          <PrivateRoute exact path="/leaderboard" component={Leaderboard} />
-          <Route component={NotFound} />
-        </Switch>
+        <LoadingBar />
+        {
+          !loading &&
+          <>
+            <Nav />
+            <Switch>
+              <PrivateRoute exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <PrivateRoute exact path="/add" component={AddQuestion} />
+              <PrivateRoute exact path="/questions/:id" component={ViewQuestion} />
+              <PrivateRoute exact path="/leaderboard" component={Leaderboard} />
+              <Route component={NotFound} />
+            </Switch>
+          </>
+        }
       </div>
     </Router>
   );
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ loadingBar }) {
   return {
-    loading: authedUser === null
+    loading: loadingBar.default === undefined || loadingBar.default === 1
   }
 }
-
 export default connect(mapStateToProps)(App)
