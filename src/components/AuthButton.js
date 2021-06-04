@@ -5,10 +5,10 @@ import { setAuthedUser } from '../actions/authedUser'
 function AuthButton({authedUser, users, dispatch}) {
 
     function handleLogout(e) {
-        dispatch(setAuthedUser(""))
+        dispatch(setAuthedUser(null))
     }
 
-    if (authedUser !== "") {
+    if (authedUser !== null) {
         return (<div className="auth-button">
             <div>{users[authedUser].name}</div>
             <button onClick={(e) => handleLogout(e)}>Logout</button>

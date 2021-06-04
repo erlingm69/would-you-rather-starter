@@ -9,7 +9,7 @@ const PrivateRoute = ({ component: Component, authedUser, ...rest }) => {
         // Otherwise, redirect the user to /signin page
         <Route {...rest} render={props => {
             return (
-            authedUser === "" ?
+            authedUser === null ?
                 <Redirect to={`/login?next=${props.location.pathname}`} />
                 : <Component {...props} />
         )}} />
