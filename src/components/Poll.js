@@ -1,17 +1,29 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { handleSaveQuestionAnswer } from '../actions/questions'
 
-function Poll({ questions, questionId }) {
+function Poll({ questions, questionId, dispatch }) {
+
+    function handleVoteOne() {
+        dispatch(handleSaveQuestionAnswer(questionId, "optionOne"))
+    }
+
+    function handleVoteTwo() {
+        dispatch(handleSaveQuestionAnswer(questionId, "optionTwo"))
+    }
+
     return (
         <div className="question-item">
-            <div className="poll-option">{questions[questionId].optionOne.text}</div>
+            <button className="poll-option" onClick={(e) => handleVoteOne()}>
+                {questions[questionId].optionOne.text}</button>
             <div className="bold-and-margin">OR</div>
-            <div className="poll-option">{questions[questionId].optionTwo.text}</div>
+            <button className="poll-option" onClick={(e) => handleVoteTwo()}>
+                {questions[questionId].optionTwo.text}</button>
         </div>
     )
 }
 
-function mapStateToProps({ questions }, {questionId}) {
+function mapStateToProps({ questions }, { questionId }) {
     return {
         questions,
         questionId

@@ -117,6 +117,11 @@ li {
   align-items: center;  
 }
 
+.question-item button {
+  font-size: inherit;
+  padding: 1em;
+}
+
 .bold-and-margin {
   font-weight: bold;
   margin: 1em;
