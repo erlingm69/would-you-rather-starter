@@ -2,16 +2,30 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 function PollResults({ questions, questionId }) {
+
+    const question = questions[questionId];
+    const optionOneAnswers = question.optionOne.votes.length
+    const optionTwoAnswers = question.optionTwo.votes.length    
+    const totalAnswers = optionOneAnswers + optionTwoAnswers
+    const percentageOptionOne = optionOneAnswers/totalAnswers*100
+    const percentageOptionTwo = optionTwoAnswers/totalAnswers*100
+
     return (
-        <div className="question-item">
-            <div className="poll-option">{questions[questionId].optionOne.text}</div>
-            <div className="bold-and-margin">OR</div>
-            <div className="poll-option">{questions[questionId].optionTwo.text}</div>
+        <div>
+            <div className="question-item">
+                <div className="poll-option">{question.optionOne.text}</div>
+                <div className="bold-and-margin">OR</div>
+                <div className="poll-option">{question.optionTwo.text}</div>
+            </div>
+            <div className="question-item">
+                <div className="poll-option"><i>{`${percentageOptionOne}% ${optionOneAnswers} vote(s)`}</i></div>
+                <div className="poll-option"><i>{`${percentageOptionTwo}% ${optionTwoAnswers} vote(s)`}</i></div>
+            </div>
         </div>
     )
 }
 
-function mapStateToProps({ questions }, {questionId}) {
+function mapStateToProps({ questions }, { questionId }) {
     return {
         questions,
         questionId
