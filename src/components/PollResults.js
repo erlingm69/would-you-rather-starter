@@ -7,8 +7,8 @@ function PollResults({ questions, authedUser, questionId }) {
     const optionOneAnswers = question.optionOne.votes.length
     const optionTwoAnswers = question.optionTwo.votes.length    
     const totalAnswers = optionOneAnswers + optionTwoAnswers
-    const percentageOptionOne = optionOneAnswers/totalAnswers*100
-    const percentageOptionTwo = optionTwoAnswers/totalAnswers*100
+    const percentageOptionOne = (optionOneAnswers/totalAnswers*100).toFixed(0)
+    const percentageOptionTwo = (optionTwoAnswers/totalAnswers*100).toFixed(0)
     const userSelectedOptionOne = question.optionOne.votes.includes(authedUser)
     const userSelectedOptionTwo = question.optionTwo.votes.includes(authedUser)
 
