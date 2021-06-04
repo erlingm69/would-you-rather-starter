@@ -31,7 +31,7 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
             })
             .catch((e) => {
                 console.warn('Error in handleAddQuestion: ', e);
-                alert('There was an error liking the question. Try again.');
+                alert('There was an error adding the question. Try again.');
             });
     };
 }
@@ -56,7 +56,7 @@ export function handleSaveQuestionAnswer(id, answer) {
             })
             .catch((e) => {
                 console.warn('Error in handleToggleTweet: ', e);
-                alert('There was an error liking the tweet. Try again.');
+                alert('There was an error saving that answer. Try again.');
             });
     };
 }
