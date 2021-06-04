@@ -1,8 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom"
+import { questionIsAnswered } from '../utils/helpers'
+import Poll from './Poll'
+import PollResults from './PollResults'
 
-function ViewQuestion({ questions, id, dispatch }) {
+function ViewQuestion({ questions, authedUser, id, dispatch }) {
 
     const question = questions[id]
     if (question === undefined) {
@@ -14,22 +17,30 @@ function ViewQuestion({ questions, id, dispatch }) {
         )
     }
 
+    const isAnswered = questionIsAnswered(questions, id, authedUser)
+
     return (
         <div>
             <h2 className="center">Would You Rather?</h2>
-            <div className="question-item">
-                <div className="poll-option">{questions[id].optionOne.text}</div>
-                <div className="bold-and-margin">OR</div>
-                <div className="poll-option">{questions[id].optionTwo.text}</div>
-            </div>
+            {
+                isAnswered ? <>
+                <h3>Results</h3>
+                <PollResults questionId={id} />
+                </> :
+                <>
+                    <h3>Select Your Preference</h3>
+                    <Poll questionId={id} />
+                    </>
+            }
         </div>
     )
 }
 
-function mapStateToProps({ questions }, props) {
+function mapStateToProps({ questions, authedUser }, props) {
     const { id } = props.match.params
     return {
         questions,
+        authedUser,
         id,
     }
 }
