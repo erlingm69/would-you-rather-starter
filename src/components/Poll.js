@@ -1,15 +1,19 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleSaveQuestionAnswer } from '../actions/questions'
 
 function Poll({ questions, questionId, dispatch }) {
+    const history = useHistory()
 
     function handleVoteOne() {
         dispatch(handleSaveQuestionAnswer(questionId, "optionOne"))
+        history.push("/")
     }
 
     function handleVoteTwo() {
         dispatch(handleSaveQuestionAnswer(questionId, "optionTwo"))
+        history.push("/")
     }
 
     return (
