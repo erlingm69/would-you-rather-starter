@@ -129,6 +129,7 @@ li {
 
 .poll-option {
   width: 50%;
+  padding: .5em;
   text-align: center;
 }
 
