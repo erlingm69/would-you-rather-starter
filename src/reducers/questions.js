@@ -1,5 +1,4 @@
 import { RECEIVE_QUESTIONS, ADD_QUESTION, ADD_QUESTION_ANSWER } from '../actions/questions'
-import authedUser from './authedUser'
 
 export default function users(state = {}, action) {
     switch (action.type) {
