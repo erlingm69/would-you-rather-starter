@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import QuestionListItem from './QuestionListItem'
 import { Link } from "react-router-dom"
+import { questionIsAnswered } from '../utils/helpers'
 
 const MODE_UNANSWERED = "unanswered"
 const MODE_ANSWERED = "answered"
@@ -46,8 +47,7 @@ function mapStateToProps({ questions, authedUser }) {
     let unanswered = {}
 
     Object.keys(questions).forEach((questionId) => {
-        if ((questions[questionId].optionOne.votes.includes(authedUser)) ||
-            (questions[questionId].optionTwo.votes.includes(authedUser))) {
+        if (questionIsAnswered(questions, questionId, authedUser)) {
             answered = {
                 ...answered,
                 [questionId]: questions[questionId]
