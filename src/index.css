@@ -163,3 +163,15 @@ li {
   position: relative;
   border: 0px solid rgba(0,0,0,.29);
 }
+
+.new-question {
+  width: 100%;
+  max-width: 590px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-question input {
+  font-size: large;
+}

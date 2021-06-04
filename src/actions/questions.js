@@ -22,14 +22,8 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
         const { authedUser } = getState()
 
         saveQuestion({
-            optionOne: {
-                votes: [],
-                text: optionOneText,
-              },
-              optionTwo: {
-                votes: [],
-                text: optionTwoText
-              },          
+            optionOneText,
+            optionTwoText,
             author: authedUser,
         })
             .then((question) => {
@@ -37,7 +31,7 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
             })
             .catch((e) => {
                 console.warn('Error in handleAddQuestion: ', e);
-                alert('There was an error liking the tweet. Try again.');
+                alert('There was an error liking the question. Try again.');
             });
     };
 }
