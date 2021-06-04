@@ -31,7 +31,9 @@ function Home({ answered, unanswered, questionId }) {
                 {
                     mode === MODE_ANSWERED && unanswered && Object.keys(answered).map((questionId) => (
                         <li key={questionId}>
-                            <QuestionListItem questionId={questionId} />
+                            <Link to={`/questions/${questionId}`}>
+                                <QuestionListItem questionId={questionId} />
+                            </Link>
                         </li>
                     ))}
             </ul>
