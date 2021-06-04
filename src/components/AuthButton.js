@@ -1,11 +1,15 @@
 import React from 'react'
 import { connect } from "react-redux"
+import { useHistory } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 
 function AuthButton({authedUser, users, dispatch}) {
+    const history = useHistory()
 
     function handleLogout(e) {
         dispatch(setAuthedUser(null))
+        // After lougout we're always going back to /login
+        history.push("/login")
     }
 
     if (authedUser !== null) {
